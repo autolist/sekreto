@@ -22,10 +22,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'multi_json'
   spec.add_dependency 'rails', ['>= 4.1', '< 5.3']
 
+  spec.add_development_dependency 'autocop', '~> 0.1.4'
   spec.add_development_dependency 'bundler', '~> 1.16'
+  spec.add_development_dependency 'pry', '~> 0.11.3'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rspec-mocks', '~> 3.0'
   spec.add_development_dependency 'stub_env', '~> 1.0'
-  spec.add_development_dependency 'pry'
 end
