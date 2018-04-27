@@ -1,0 +1,2 @@
+inherit_gem:
+  autocop: .autocop-rubocop.yml

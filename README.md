@@ -1,5 +1,8 @@
 # Sekreto
 
+[![Gem Version](https://badge.fury.io/rb/sekreto.svg)](https://badge.fury.io/rb/sekreto)
+[![Build Status](https://travis-ci.org/autolist/sekreto.svg?branch=master)](https://travis-ci.org/autolist/sekreto)
+
 Use AWS Secrets Manager from Ruby, with rails support
 
 ## Installation
