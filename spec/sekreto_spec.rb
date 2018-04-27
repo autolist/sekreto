@@ -1,5 +1,6 @@
 RSpec.describe Sekreto do
   subject(:sekreto) { described_class }
+
   let(:manager) { double }
   let(:secret_id) { 'MY_SECRET' }
   let(:secret_response) { OpenStruct.new(secret_string: secret_string) }
@@ -39,8 +40,8 @@ RSpec.describe Sekreto do
       let(:fallback) { double }
 
       it 'calls fallback lookup' do
-        allow(config).to receive(:fallback_lookup).and_return(fallback)
-        expect(fallback).to receive(:call).once.with(secret_id)
+        allow(config).to receive(:fallback_lookup) { fallback }
+        allow(fallback).to receive(:call).once.with(secret_id)
         sekreto.get_value(secret_id)
       end
     end
@@ -48,9 +49,12 @@ RSpec.describe Sekreto do
     context 'when allowed env' do
       let(:allowed_env) { true }
 
+      before do
+        allow(described_class).to receive(:secrets_manager) { manager }
+        allow(manager).to receive(:get_secret_value) { secret_response }
+      end
+
       it 'gets secret value from manager' do
-        allow(described_class).to receive(:secrets_manager).and_return(manager)
-        expect(manager).to receive(:get_secret_value).and_return(secret_response)
         expect(sekreto.get_value(secret_id)).to eq(secret_string)
       end
     end
@@ -68,7 +72,8 @@ RSpec.describe Sekreto do
 
     context 'when valid json secret' do
       before do
-        expect(sekreto).to receive(:get_value).with(secret_id).and_return(secret_response.secret_string)
+        allow(described_class).to receive(:secrets_manager) { manager }
+        allow(manager).to receive(:get_secret_value) { secret_response }
       end
 
       it 'returns parsed secret' do

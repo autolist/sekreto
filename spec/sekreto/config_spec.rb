@@ -14,7 +14,7 @@ RSpec.describe Sekreto::Config do
       expect(config.secrets_manager).to be_nil
     end
 
-    context 'fallback lookup' do
+    context 'when fallback lookup' do
       let(:secret_id) { 'MY_SECRET' }
       let(:secret_val) { 'MY_SECRET_VAL' }
 
