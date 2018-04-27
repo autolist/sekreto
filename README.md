@@ -59,6 +59,27 @@ Sekreto.setup do |setup|
 end
 ```
 
+### Retrieving Secrets
+
+Getting plain text secrets:
+
+```ruby
+# Will query for "#{prefix}/my-secret"
+secret = Sekreto.get_value('my-secret')
+puts secret
+# Output: asdf124asdf134asdf1243asdf
+```
+
+Getting JSON secrets will return the parsed value
+
+```ruby
+# Will query for "#{prefix}/my-secret-config"
+secret = Sekreto.get_json_value('my-secret-config')
+puts secret
+# Output: { some: 'json', data: 'here' }
+```
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
