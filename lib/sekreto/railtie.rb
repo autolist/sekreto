@@ -1,5 +1,3 @@
-require 'rails'
-
 module Sekreto
   # Rails Railtie to set up the Sekreto configuration
   class Railtie < ::Rails::Railtie

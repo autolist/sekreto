@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sekreto (0.1.1)
+    sekreto (0.1.2)
       aws-sdk-secretsmanager
       multi_json
       rails (>= 4.1, < 5.3)
