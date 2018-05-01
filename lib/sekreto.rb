@@ -14,9 +14,12 @@ module Sekreto
     end
 
     def get_value(secret_id)
-      return config.fallback_lookup.call(secret_id) unless config.is_allowed_env.call
+      fail 'Not allowed env' unless config.is_allowed_env.call
       response = secrets_manager.get_secret_value(secret_id: secret_name(secret_id))
       response.secret_string
+    rescue StandardError => err
+      logger.warn("[Sekreto] Failed to get value!\n#{err}")
+      config.fallback_lookup.call(secret_id)
     end
 
     def get_json_value(secret_id)
@@ -36,6 +39,10 @@ module Sekreto
 
     def secrets_manager
       config.secrets_manager
+    end
+
+    def logger
+      config.logger
     end
   end
 end

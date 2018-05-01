@@ -2,6 +2,7 @@ RSpec.describe Sekreto do
   subject(:sekreto) { described_class }
 
   let(:manager) { double }
+  let(:logger) { instance_double('Logger') }
   let(:secret_id) { 'MY_SECRET' }
   let(:secret_response) { OpenStruct.new(secret_string: secret_string) }
 
@@ -37,11 +38,17 @@ RSpec.describe Sekreto do
 
     context 'when not allowed env' do
       let(:allowed_env) { false }
+      let(:error_message) { 'Not allowed env' }
       let(:fallback) { double }
 
-      it 'calls fallback lookup' do
+      before do
         allow(config).to receive(:fallback_lookup) { fallback }
         allow(fallback).to receive(:call).once.with(secret_id)
+        allow(config).to receive(:logger) { logger }
+        allow(logger).to receive(:warn).with("[Sekreto] Failed to get value!\n#{error_message}")
+      end
+
+      it 'calls fallback lookup' do
         sekreto.get_value(secret_id)
       end
     end
@@ -56,6 +63,29 @@ RSpec.describe Sekreto do
 
       it 'gets secret value from manager' do
         expect(sekreto.get_value(secret_id)).to eq(secret_string)
+      end
+    end
+
+    context 'when an exception happens' do
+      let(:allowed_env) { true }
+      let(:fallback) { double }
+      let(:error_message) { 'Something failed' }
+
+      before do
+        allow(described_class).to receive(:secrets_manager) { manager }
+        allow(manager).to receive(:get_secret_value).and_raise(StandardError, error_message)
+      end
+
+      it 'calls fallback lookup' do
+        allow(config.logger).to receive(:warn)
+        allow(fallback).to receive(:call).once.with(secret_id)
+        expect(sekreto.get_value(secret_id)).to be_nil
+      end
+
+      it 'logs a warning' do
+        allow(config).to receive(:logger) { logger }
+        allow(logger).to receive(:warn).with("[Sekreto] Failed to get value!\n#{error_message}")
+        sekreto.get_value(secret_id)
       end
     end
   end
