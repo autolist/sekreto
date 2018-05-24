@@ -28,4 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rspec-mocks', '~> 3.0'
   spec.add_development_dependency 'stub_env', '~> 1.0'
+  spec.add_development_dependency 'yard', '~> 0.9.11'
 end

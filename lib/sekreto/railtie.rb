@@ -1,5 +1,9 @@
 module Sekreto
   # Rails Railtie to set up the Sekreto configuration
+  #
+  # Defaults the secrets Manager to Aws::SecretsManager::Client.new
+  # Defaults the prefix to Rails app name and Rails.env e.g. foo-staging
+  # Defaults allowed envs to check Rails.env is production or staging
   class Railtie < ::Rails::Railtie
     config.after_initialize do
       app_name = ::Rails.application.class.to_s.split('::').first.downcase
