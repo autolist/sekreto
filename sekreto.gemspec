@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Autolist Engineering']
   spec.email         = %w[dev@autolist.com]
 
-  spec.summary       = 'AwsSecretsManager for Rails'
-  spec.description   = 'Manage AWS Secrets from Rails'
+  spec.summary       = 'AwsSecretsManager for Ruby'
+  spec.description   = 'Manage AWS Secrets from Ruby'
   spec.homepage      = 'https://github.com/autolist/sekreto'
   spec.license       = 'MIT'
   spec.files         = Dir.glob('{bin,lib}/**/*') + %w[README.md]
@@ -20,7 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'aws-sdk-secretsmanager'
   spec.add_dependency 'multi_json'
-  spec.add_dependency 'rails', ['>= 4.1', '< 5.3']
 
   spec.add_development_dependency 'autocop', '~> 0.1.4'
   spec.add_development_dependency 'bundler', '~> 1.16'
