@@ -3,6 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/sekreto.svg)](https://badge.fury.io/rb/sekreto)
 [![Build Status](https://travis-ci.org/autolist/sekreto.svg?branch=master)](https://travis-ci.org/autolist/sekreto)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3f03647e9b305f1626de/maintainability)](https://codeclimate.com/github/autolist/sekreto/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3f03647e9b305f1626de/test_coverage)](https://codeclimate.com/github/autolist/sekreto/test_coverage)
 
 Use AWS Secrets Manager from Ruby, with rails support
 
