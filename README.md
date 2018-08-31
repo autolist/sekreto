@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/autolist/sekreto.svg?branch=master)](https://travis-ci.org/autolist/sekreto)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3f03647e9b305f1626de/maintainability)](https://codeclimate.com/github/autolist/sekreto/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/3f03647e9b305f1626de/test_coverage)](https://codeclimate.com/github/autolist/sekreto/test_coverage)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=autolist/sekreto)](https://dependabot.com)
 
 Use AWS Secrets Manager from Ruby, with rails support
 
