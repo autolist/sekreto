@@ -88,6 +88,22 @@ RSpec.describe Sekreto do
         sekreto.get_value(secret_id)
       end
     end
+
+    context 'when prefix given' do
+      let(:allowed_env) { true }
+      let(:new_prefix) { 'shared' }
+      let(:prefixed_secret_id) { [new_prefix, secret_id].join('/') }
+
+      before do
+        allow(described_class).to receive(:secrets_manager) { manager }
+        allow(manager).to receive(:get_secret_value) { secret_response }
+        sekreto.get_value(secret_id, new_prefix)
+      end
+
+      it 'passes secret_id with overridden prefix' do
+        expect(manager).to have_received(:get_secret_value).with(secret_id: prefixed_secret_id)
+      end
+    end
   end
 
   describe 'get_json_value' do
@@ -108,6 +124,21 @@ RSpec.describe Sekreto do
 
       it 'returns parsed secret' do
         expect(sekreto.get_json_value(secret_id)).to eq(MultiJson.load(secret_string))
+      end
+    end
+
+    context 'when prefix given' do
+      let(:new_prefix) { 'shared' }
+      let(:prefixed_secret_id) { [new_prefix, secret_id].join('/') }
+
+      before do
+        allow(described_class).to receive(:secrets_manager) { manager }
+        allow(manager).to receive(:get_secret_value) { secret_response }
+        sekreto.get_json_value(secret_id, new_prefix)
+      end
+
+      it 'passes secret_id with overridden prefix' do
+        expect(manager).to have_received(:get_secret_value).with(secret_id: prefixed_secret_id)
       end
     end
   end

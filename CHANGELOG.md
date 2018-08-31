@@ -1,3 +1,7 @@
+## v0.3.0 (2018-08-31)
+
+- Add custom prefix input when getting values
+
 ## v0.2.0 (2018-05-24)
 
 - Remove dependency on Rails [pr #5][pr5]
