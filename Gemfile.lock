@@ -38,7 +38,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     rainbow (3.0.0)
-    rake (10.5.0)
+    rake (12.3.1)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -79,7 +79,7 @@ DEPENDENCIES
   autocop (~> 0.1.4)
   bundler (~> 1.16)
   pry (~> 0.11.3)
-  rake (~> 10.0)
+  rake (~> 12.3)
   rspec (~> 3.0)
   rspec-mocks (~> 3.0)
   sekreto!
