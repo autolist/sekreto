@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sekreto (0.2.0)
+    sekreto (0.3.0)
       aws-sdk-secretsmanager
       multi_json
 
@@ -88,4 +88,4 @@ DEPENDENCIES
   yard (~> 0.9.11)
 
 BUNDLED WITH
-   1.16.1
+   1.16.4
