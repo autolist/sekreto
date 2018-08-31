@@ -29,11 +29,13 @@ module Sekreto
     # Get the value given a secret
     #
     # @param secret_id [String] - The secret ID to get the value for
+    # @param prefix [String] - An optional override of the prefix
     # @return [String] - The value of the stored secret
-    def get_value(secret_id)
+    def get_value(secret_id, prefix = nil)
       fail 'Not allowed env' unless config.is_allowed_env.call
-      response = secrets_manager.get_secret_value(secret_id: secret_name(secret_id))
-      response.secret_string
+      secrets_manager.get_secret_value(
+        secret_id: secret_name(secret_id, prefix)
+      ).secret_string
     rescue StandardError => err
       logger.warn("[Sekreto] Failed to get value!\n#{err}")
       config.fallback_lookup.call(secret_id)
@@ -44,9 +46,10 @@ module Sekreto
     # Get the JSON value of a secret
     #
     # @param secret_id [String] - The secret ID to get the value for
+    # @param prefix [String] - An optional override of the prefix
     # @return [Hash] - The parsed JSON value of the secret
-    def get_json_value(secret_id)
-      response = get_value(secret_id)
+    def get_json_value(secret_id, prefix = nil)
+      response = get_value(secret_id, prefix)
       MultiJson.load(response)
     end
 
@@ -61,8 +64,9 @@ module Sekreto
 
     private
 
-    def secret_name(secret_id)
-      [config.prefix, secret_id].join('/')
+    def secret_name(secret_id, prefix = nil)
+      prefix ||= config.prefix
+      [prefix, secret_id].join('/')
     end
 
     def secrets_manager

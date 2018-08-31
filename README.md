@@ -82,6 +82,15 @@ puts secret
 # Output: { some: 'json', data: 'here' }
 ```
 
+Getting secrets with a custom prefix. Useful for shared secrets or secrets
+across apps, namespaces, etc.
+
+```ruby
+# Will query for "shared-secrets/MY-SECRET-CONFIG"
+secret = Sekreto.get_json_value('MY-SECRET-CONFIG', 'shared-secrets')
+puts secret
+# Output: { some: 'json', data: 'here' }
+```
 
 ## Development
 
