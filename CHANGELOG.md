@@ -1,3 +1,7 @@
+## v0.4.0 (2018-09-05)
+
+- Allow no prefix to be used **not recommended**
+
 ## v0.3.0 (2018-08-31)
 
 - Add custom prefix input when getting values

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sekreto (0.3.0)
+    sekreto (0.4.0)
       aws-sdk-secretsmanager
       multi_json
 
