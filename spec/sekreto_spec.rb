@@ -104,6 +104,20 @@ RSpec.describe Sekreto do
         expect(manager).to have_received(:get_secret_value).with(secret_id: prefixed_secret_id)
       end
     end
+
+    context 'when the prefix is false' do
+      let(:allowed_env) { true }
+
+      before do
+        allow(described_class).to receive(:secrets_manager) { manager }
+        allow(manager).to receive(:get_secret_value) { secret_response }
+        sekreto.get_value(secret_id, false)
+      end
+
+      it 'passes secret_id without a prefix' do
+        expect(manager).to have_received(:get_secret_value).with(secret_id: secret_id)
+      end
+    end
   end
 
   describe 'get_json_value' do

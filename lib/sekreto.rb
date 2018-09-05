@@ -64,9 +64,16 @@ module Sekreto
 
     private
 
-    def secret_name(secret_id, prefix = nil)
-      prefix ||= config.prefix
-      [prefix, secret_id].join('/')
+    def secret_name(secret_id, given_prefix = nil)
+      if given_prefix
+        prefix = given_prefix
+      elsif given_prefix == false
+        prefix = nil
+      else
+        prefix = config.prefix
+      end
+
+      [prefix, secret_id].compact.join('/')
     end
 
     def secrets_manager
