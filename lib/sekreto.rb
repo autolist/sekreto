@@ -65,6 +65,7 @@ module Sekreto
     private
 
     def secret_name(secret_id, given_prefix = nil)
+      # rubocop:disable Style/ConditionalAssignment
       if given_prefix
         prefix = given_prefix
       elsif given_prefix == false
@@ -72,6 +73,7 @@ module Sekreto
       else
         prefix = config.prefix
       end
+      # rubocop:enable Style/ConditionalAssignment
 
       [prefix, secret_id].compact.join('/')
     end
