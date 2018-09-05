@@ -92,6 +92,16 @@ puts secret
 # Output: { some: 'json', data: 'here' }
 ```
 
+If you want to skip prefixes all together you can pas `false` to either
+get value methods. **Not recommended**
+
+```ruby
+# Will query for "shared-secrets/MY-SECRET-CONFIG"
+secret = Sekreto.get_json_value('MY-SECRET-CONFIG', false)
+puts secret
+# Output: { some: 'json', data: 'here' }
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
