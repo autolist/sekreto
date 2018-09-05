@@ -90,6 +90,11 @@ across apps, namespaces, etc.
 secret = Sekreto.get_json_value('MY-SECRET-CONFIG', 'shared-secrets')
 puts secret
 # Output: { some: 'json', data: 'here' }
+
+# Pass false for no prefix. Will query for "MY-SECRET-CONFIG"
+secret = Sekreto.get_json_value('MY-SECRET-CONFIG', false)
+puts secret
+# Output: { some: 'json', data: 'here' }
 ```
 
 ## Development
