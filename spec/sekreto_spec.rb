@@ -104,6 +104,21 @@ RSpec.describe Sekreto do
         expect(manager).to have_received(:get_secret_value).with(secret_id: prefixed_secret_id)
       end
     end
+
+    context 'when prefix is false' do
+      let(:allowed_env) { true }
+      let(:prefixed_secret_id) { secret_id }
+
+      before do
+        allow(described_class).to receive(:secrets_manager) { manager }
+        allow(manager).to receive(:get_secret_value) { secret_response }
+        sekreto.get_value(secret_id, false)
+      end
+
+      it 'uses only secret_id for lookup' do
+        expect(manager).to have_received(:get_secret_value).with(secret_id: prefixed_secret_id)
+      end
+    end
   end
 
   describe 'get_json_value' do
@@ -138,6 +153,21 @@ RSpec.describe Sekreto do
       end
 
       it 'passes secret_id with overridden prefix' do
+        expect(manager).to have_received(:get_secret_value).with(secret_id: prefixed_secret_id)
+      end
+    end
+
+    context 'when prefix is false' do
+      let(:allowed_env) { true }
+      let(:prefixed_secret_id) { secret_id }
+
+      before do
+        allow(described_class).to receive(:secrets_manager) { manager }
+        allow(manager).to receive(:get_secret_value) { secret_response }
+        sekreto.get_json_value(secret_id, false)
+      end
+
+      it 'uses only secret_id for lookup' do
         expect(manager).to have_received(:get_secret_value).with(secret_id: prefixed_secret_id)
       end
     end

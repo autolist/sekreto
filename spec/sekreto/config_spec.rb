@@ -1,9 +1,9 @@
 RSpec.describe Sekreto::Config do
-  describe 'initialize' do
-    subject(:config) { described_class.new }
+  subject(:config) { described_class.new }
 
+  describe 'initialize' do
     it 'defaults prefix' do
-      expect(config.prefix).to eq('secrets')
+      expect(config.prefix).to eq(described_class::DEFAULT_PREFIX)
     end
 
     it 'defaults allowed env to true' do
@@ -22,6 +22,34 @@ RSpec.describe Sekreto::Config do
 
       it 'defaults to check ENV' do
         expect(config.fallback_lookup.call(secret_id)).to eq(secret_val)
+      end
+    end
+  end
+
+  describe 'prefix_name' do
+    let(:prefix_name) { config.prefix_name(path) }
+
+    context 'when false path' do
+      let(:path) { false }
+
+      it 'returns nil' do
+        expect(prefix_name).to be_nil
+      end
+    end
+
+    context 'when nil path' do
+      let(:path) { nil }
+
+      it 'returns config prefix' do
+        expect(prefix_name).to eq(described_class::DEFAULT_PREFIX)
+      end
+    end
+
+    context 'when path passed in' do
+      let(:path) { 'la-la-la' }
+
+      it 'returns config prefix' do
+        expect(prefix_name).to eq(path)
       end
     end
   end
