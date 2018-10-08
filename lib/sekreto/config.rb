@@ -37,6 +37,7 @@ module Sekreto
     #          When a false is passed then no prefix is used. (Not recommended)
     def prefix_name(prefix_path = nil)
       return nil if prefix_path == false
+
       prefix_path || prefix
     end
   end

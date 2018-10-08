@@ -33,6 +33,7 @@ module Sekreto
     # @return [String] - The value of the stored secret
     def get_value(secret_id, prefix = nil)
       fail 'Not allowed env' unless config.is_allowed_env.call
+
       secrets_manager.get_secret_value(
         secret_id: secret_name(secret_id, prefix)
       ).secret_string
