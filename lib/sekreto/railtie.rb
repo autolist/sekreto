@@ -5,7 +5,7 @@ module Sekreto
   # Defaults the prefix to Rails app name and Rails.env e.g. foo-staging
   # Defaults allowed envs to check Rails.env is production or staging
   class Railtie < ::Rails::Railtie
-    config.before_initialize do
+    config.before_configuration do
       app_name = ::Rails.application.class.to_s.split('::').first.downcase
 
       Sekreto.setup do |setup|
