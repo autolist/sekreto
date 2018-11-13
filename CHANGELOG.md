@@ -1,3 +1,7 @@
+## v0.5.0 (2018-09-05)
+
+- Use railtie `#before_configuration` for Sekreto [#23](https://github.com/autolist/sekreto/pull/23) @mattbeedle
+
 ## v0.4.0 (2018-09-05)
 
 - Allow no prefix to be used **not recommended**
