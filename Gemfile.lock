@@ -9,7 +9,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.0)
-    autocop (0.2.3)
+    autocop (0.2.4)
       rubocop (>= 0.52.1)
       rubocop-rspec (>= 1.22.1)
     aws-eventstream (1.0.1)
@@ -71,7 +71,7 @@ GEM
     simplecov-html (0.10.2)
     stub_env (1.0.4)
       rspec (>= 2.0, < 4.0)
-    unicode-display_width (1.4.0)
+    unicode-display_width (1.4.1)
     yard (0.9.16)
 
 PLATFORMS
