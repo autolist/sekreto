@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'multi_json'
 
   spec.add_development_dependency 'autocop', '~> 0.2.0'
-  spec.add_development_dependency 'bundler', '~> 1.16'
+  spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'pry', '~> 0.12.0'
   spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'rspec', '~> 3.0'
