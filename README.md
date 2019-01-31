@@ -96,7 +96,7 @@ If you want to skip prefixes all together you can pas `false` to either
 get value methods. **Not recommended**
 
 ```ruby
-# Will query for "shared-secrets/MY-SECRET-CONFIG"
+# Will query for "MY-SECRET-CONFIG"
 secret = Sekreto.get_json_value('MY-SECRET-CONFIG', false)
 puts secret
 # Output: { some: 'json', data: 'here' }
