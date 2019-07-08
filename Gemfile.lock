@@ -75,7 +75,7 @@ GEM
     stub_env (1.0.4)
       rspec (>= 2.0, < 4.0)
     unicode-display_width (1.4.1)
-    yard (0.9.19)
+    yard (0.9.20)
 
 PLATFORMS
   ruby
