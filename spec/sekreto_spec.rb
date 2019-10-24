@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Sekreto do
   subject(:sekreto) { described_class }
 

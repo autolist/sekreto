@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Sekreto
   # Rails Railtie to set up the Sekreto configuration
   #

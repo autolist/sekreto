@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'aws-sdk-secretsmanager'
 require 'multi_json'
 
@@ -37,8 +39,8 @@ module Sekreto
       secrets_manager.get_secret_value(
         secret_id: secret_name(secret_id, prefix)
       ).secret_string
-    rescue StandardError => err
-      logger.warn("[Sekreto] Failed to get value!\n#{err}")
+    rescue StandardError => e
+      logger.warn("[Sekreto] Failed to get value!\n#{e}")
       config.fallback_lookup.call(secret_id)
     end
 
