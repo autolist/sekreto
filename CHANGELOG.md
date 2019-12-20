@@ -1,3 +1,7 @@
+## v0.5.1 (2019-12-20)
+
+- Print secret name in lookup warning
+
 ## v0.5.0 (2018-11-13)
 
 - Use railtie `#before_configuration` for Sekreto [#23](https://github.com/autolist/sekreto/pull/23) @mattbeedle
