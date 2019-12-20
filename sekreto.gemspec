@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'aws-sdk-secretsmanager'
   spec.add_dependency 'multi_json'
 
-  spec.add_development_dependency 'autocop', '~> 0.4.0'
+  spec.add_development_dependency 'autocop', '>= 0.4.2'
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'pry', '~> 0.12.0'
   spec.add_development_dependency 'rake', '~> 13.0'

@@ -40,7 +40,7 @@ module Sekreto
         secret_id: secret_name(secret_id, prefix)
       ).secret_string
     rescue StandardError => e
-      logger.warn("[Sekreto] Failed to get value!\n#{e}")
+      logger.warn("[Sekreto] Failed to get value for #{secret_name(secret_id, prefix)}!\n#{e}")
       config.fallback_lookup.call(secret_id)
     end
 

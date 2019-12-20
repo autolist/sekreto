@@ -14,7 +14,7 @@ task default: :test
 
 # Rubocop
 desc 'Run Rubocop lint checks'
-task :rubocop do
+task :rubocop do # rubocop:disable Rails/RakeEnvironment
   RuboCop::RakeTask.new
 end
 

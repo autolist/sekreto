@@ -47,7 +47,7 @@ RSpec.describe Sekreto do
         allow(config).to receive(:fallback_lookup) { fallback }
         allow(fallback).to receive(:call).once.with(secret_id)
         allow(config).to receive(:logger) { logger }
-        allow(logger).to receive(:warn).with("[Sekreto] Failed to get value!\n#{error_message}")
+        allow(logger).to receive(:warn).with("[Sekreto] Failed to get value for secrets/#{secret_id}!\n#{error_message}")
       end
 
       it 'calls fallback lookup' do
@@ -86,7 +86,7 @@ RSpec.describe Sekreto do
 
       it 'logs a warning' do
         allow(config).to receive(:logger) { logger }
-        allow(logger).to receive(:warn).with("[Sekreto] Failed to get value!\n#{error_message}")
+        allow(logger).to receive(:warn).with("[Sekreto] Failed to get value for secrets/#{secret_id}!\n#{error_message}")
         sekreto.get_value(secret_id)
       end
     end
