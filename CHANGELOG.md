@@ -1,3 +1,6 @@
+## v0.5.1 (2021-01-20)
+
+- Does not raise when AWS credentials are missing
 ## v0.5.1 (2019-12-20)
 
 - Print secret name in lookup warning
