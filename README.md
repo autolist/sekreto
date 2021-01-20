@@ -62,6 +62,18 @@ Sekreto.setup do |setup|
 end
 ```
 
+Only use Aws::SecretsManager in specific environments
+
+_config/initializers/sekreto.rb_
+```ruby
+Sekreto.setup do |setup|
+  setup.secrets_manager = %w[production staging].include?(::Rails.env) ? Aws::SecretsManager::Client.new : nil
+  setup.prefix = 'sparkecommerce'
+  setup.is_allowed_env = -> { %w[production staging].include?(::Rails.env) }
+  setup.fallback_lookup = ->(secret_id) { ENV[secret_id] }
+end
+```
+
 ### Retrieving Secrets
 
 Getting plain text secrets:
