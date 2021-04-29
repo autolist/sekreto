@@ -1,0 +1,19 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "20:00"
+    timezone: America/Los_Angeles
+  open-pull-requests-limit: 20
+  ignore:
+  - dependency-name: aws-sdk-secretsmanager
+    versions:
+    - 1.43.0
+    - 1.44.0
+    - 1.45.0
+  - dependency-name: pry
+    versions:
+    - 0.13.1
+    - 0.14.0
